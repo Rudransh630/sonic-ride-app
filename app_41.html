@@ -1,0 +1,365 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitPro</title>
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            background-color: #2E4053;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .hero {
+            background-image: url('https://picsum.photos/200/300');
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+        }
+        
+        .hero h1 {
+            font-size: 36px;
+            font-weight: bold;
+        }
+        
+        .hero button {
+            background-color: #FFC107;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .hero button:hover {
+            background-color: #FFA07A;
+        }
+        
+        .home-screen {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .home-screen .user-profile {
+            display: flex;
+            align-items: center;
+        }
+        
+        .home-screen .user-profile img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        
+        .home-screen .user-profile h3 {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .home-screen .recent-activity {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .home-screen .recent-activity h3 {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .home-screen .recent-activity ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .home-screen .recent-activity li {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .home-screen .recent-activity li:last-child {
+            border-bottom: none;
+        }
+        
+        .user-profile-section {
+            padding: 20px;
+        }
+        
+        .user-profile-section h2 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .user-profile-section .profile-picture {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+        
+        .user-profile-section .basic-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .user-profile-section .basic-info h3 {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .user-profile-section .basic-info p {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .user-profile-section .goal-setting {
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .user-profile-section .goal-setting h2 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .user-profile-section .goal-setting .goal {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .user-profile-section .goal-setting .goal:last-child {
+            border-bottom: none;
+        }
+        
+        .activity-tracking-section {
+            padding: 20px;
+        }
+        
+        .activity-tracking-section h2 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .activity-tracking-section .calendar-view {
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .activity-tracking-section .calendar-view h3 {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .activity-tracking-section .calendar-view ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .activity-tracking-section .calendar-view li {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .activity-tracking-section .calendar-view li:last-child {
+            border-bottom: none;
+        }
+        
+        .workout-library-section {
+            padding: 20px;
+        }
+        
+        .workout-library-section h2 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .workout-library-section .workout-library {
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .workout-library-section .workout-library h3 {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .workout-library-section .workout-library ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .workout-library-section .workout-library li {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .workout-library-section .workout-library li:last-child {
+            border-bottom: none;
+        }
+        
+        .nutrition-and-meal-planning-section {
+            padding: 20px;
+        }
+        
+        .nutrition-and-meal-planning-section h2 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .nutrition-and-meal-planning-section .food-logging {
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .nutrition-and-meal-planning-section .food-logging h3 {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .nutrition-and-meal-planning-section .food-logging ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .nutrition-and-meal-planning-section .food-logging li {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .nutrition-and-meal-planning-section .food-logging li:last-child {
+            border-bottom: none;
+        }
+        
+        .community-and-motivation-section {
+            padding: 20px;
+        }
+        
+        .community-and-motivation-section h2 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .community-and-motivation-section .social-sharing {
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .community-and-motivation-section .social-sharing h3 {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .community-and-motivation-section .social-sharing ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .community-and-motivation-section .social-sharing li {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .community-and-motivation-section .social-sharing li:last-child {
+            border-bottom: none;
+        }
+        
+        .footer {
+            background-color: #2E4053;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            clear: both;
+        }
+        
+        @media only screen and (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header {
+                padding: 10px;
+            }
+            
+            .hero {
+                height: 200px;
+            }
+            
+            .hero h1 {
+                font-size: 24px;
+            }
+            
+            .home-screen {
+                flex-direction: column;
+            }
+            
+            .home-screen .user-profile {
+                margin-bottom: 20px;
+            }
+            
+            .home-screen .recent-activity {
+                margin-bottom: 20px;
+            }
+            
+            .user-profile-section {
+                padding: 10px;
+            }
+            
+            .user-profile-section .basic-info {
+                padding: 10px;
+            }
+            
+            .user-profile-section .goal-setting {
+                padding: 10px;
+            }
+            
+           
