@@ -1,0 +1,320 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitGenius</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#">Workouts</a></li>
+                <li><a href="#">Nutrition</a></li>
+                <li><a href="#">Progress</a></li>
+                <li><a href="#">Community</a></li>
+                <li><a href="#">Settings</a></li>
+            </ul>
+        </nav>
+        <button id="menu-btn">Menu</button>
+    </header>
+    <main>
+        <section id="onboarding" class="section active">
+            <h2>Welcome to FitGenius!</h2>
+            <p>Set up your profile, goals, and preferences to get started.</p>
+            <button id="start-btn">Get Started</button>
+        </section>
+        <section id="dashboard" class="section">
+            <h2>Dashboard</h2>
+            <p>Welcome to your dashboard!</p>
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            <div class="workouts-container">
+                <h3>Upcoming Workouts:</h3>
+                <ul id="workouts-list">
+                    <!-- workouts list will be populated dynamically -->
+                </ul>
+            </div>
+            <div class="nutrition-container">
+                <h3>Nutrition Plan:</h3>
+                <p>Calories: <span id="calories">0</span></p>
+                <p>Macronutrients: <span id="macronutrients">0g protein, 0g fat, 0g carbs</span></p>
+            </div>
+        </section>
+        <section id="workouts" class="section">
+            <h2>Workouts</h2>
+            <p>Choose from a variety of exercises and routines.</p>
+            <div class="workouts-container">
+                <h3>Available Workouts:</h3>
+                <ul id="workouts-list">
+                    <!-- workouts list will be populated dynamically -->
+                </ul>
+            </div>
+        </section>
+        <section id="nutrition" class="section">
+            <h2>Nutrition</h2>
+            <p>Track your daily food intake and access healthy recipes.</p>
+            <div class="nutrition-container">
+                <h3>Today's Meals:</h3>
+                <ul id="meals-list">
+                    <!-- meals list will be populated dynamically -->
+                </ul>
+                <button id="add-meal-btn">Add Meal</button>
+            </div>
+        </section>
+        <section id="progress" class="section">
+            <h2>Progress</h2>
+            <p>Track your progress and access insights and visualizations.</p>
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            <div class="charts-container">
+                <h3>Progress Charts:</h3>
+                <canvas id="weight-chart"></canvas>
+                <canvas id="distance-chart"></canvas>
+            </div>
+        </section>
+        <section id="community" class="section">
+            <h2>Community</h2>
+            <p>Join fitness challenges and connect with others.</p>
+            <div class="challenges-container">
+                <h3>Available Challenges:</h3>
+                <ul id="challenges-list">
+                    <!-- challenges list will be populated dynamically -->
+                </ul>
+            </div>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
+```
+
+```css
+/* style.css */
+
+body {
+    font-family: Open Sans, sans-serif;
+    background-color: #f2f2f2;
+}
+
+header {
+    background-color: #3498db;
+    color: #ffffff;
+    padding: 1em;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav li {
+    margin-right: 20px;
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: #cccccc;
+}
+
+#menu-btn {
+    background-color: #8bc34a;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#menu-btn:hover {
+    background-color: #7dbf7d;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.section {
+    background-color: #ffffff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+
+.section.active {
+    background-color: #f7f7f7;
+}
+
+h2 {
+    margin-top: 0;
+}
+
+.progress-container {
+    width: 100%;
+    height: 50px;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: #3498db;
+    transition: width 0.5s ease-in-out;
+}
+
+.workouts-container {
+    padding: 20px;
+}
+
+.workouts-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.workouts-list li {
+    margin-bottom: 10px;
+}
+
+.nutrition-container {
+    padding: 20px;
+}
+
+#calories {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#macronutrients {
+    font-size: 18px;
+}
+
+.challenges-container {
+    padding: 20px;
+}
+
+.challenges-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.challenges-list li {
+    margin-bottom: 10px;
+}
+
+.charts-container {
+    padding: 20px;
+}
+
+#weight-chart, #distance-chart {
+    width: 100%;
+    height: 200px;
+}
+```
+
+```javascript
+// script.js
+
+// get elements
+const onboardingSection = document.getElementById('onboarding');
+const dashboardSection = document.getElementById('dashboard');
+const workoutsSection = document.getElementById('workouts');
+const nutritionSection = document.getElementById('nutrition');
+const progressSection = document.getElementById('progress');
+const communitySection = document.getElementById('community');
+
+// add event listeners
+onboardingSection.addEventListener('click', () => {
+    dashboardSection.classList.add('active');
+    onboardingSection.classList.remove('active');
+});
+
+dashboardSection.addEventListener('click', () => {
+    dashboardSection.classList.add('active');
+    onboardingSection.classList.remove('active');
+});
+
+workoutsSection.addEventListener('click', () => {
+    workoutsSection.classList.add('active');
+    dashboardSection.classList.remove('active');
+});
+
+nutritionSection.addEventListener('click', () => {
+    nutritionSection.classList.add('active');
+    dashboardSection.classList.remove('active');
+});
+
+progressSection.addEventListener('click', () => {
+    progressSection.classList.add('active');
+    dashboardSection.classList.remove('active');
+});
+
+communitySection.addEventListener('click', () => {
+    communitySection.classList.add('active');
+    dashboardSection.classList.remove('active');
+});
+
+// populate workouts list
+const workoutsList = document.getElementById('workouts-list');
+const workouts = [
+    { name: 'Chest Day', exercises: ['Bench Press', 'Incline Dumbbell Press', 'Cable Fly'] },
+    { name: 'Back Day', exercises: ['Deadlift', 'Bent-Over Barbell Rows', 'Lat Pulldowns'] },
+    { name: 'Leg Day', exercises: ['Squats', 'Leg Press', 'Lunges'] },
+    { name: 'Shoulder Day', exercises: ['Standing Military Press', 'Seated Dumbbell Shoulder Press', 'Lateral Raises'] },
+    { name: 'Arm Day', exercises: ['Bicep Curls', 'Tricep Dips', 'Overhead Dumbbell Extensions'] },
+];
+
+workouts.forEach(workout => {
+    const li = document.createElement('li');
+    li.textContent = workout.name;
+    workoutsList.appendChild(li);
+});
+
+// populate meals list
+const mealsList = document.getElementById('meals-list');
+const meals = [
+    { name: 'Breakfast', food: 'Scrambled eggs' },
+    { name: 'Lunch', food: 'Grilled chicken' },
+    { name: 'Dinner', food: 'Salmon' },
+];
+
+meals.forEach(meal => {
+    const li = document.createElement('li');
+    li.textContent = meal.name + ': ' + meal.food;
+    mealsList.appendChild(li);
+});
+
+// populate challenges list
+const challengesList = document.getElementById('challenges-list');
+const challenges = [
+    { name: 'Weight Loss Challenge', duration: '6 weeks' },
+    { name: 'Fitness Challenge', duration: '3 months' },
+];
+
+challenges.forEach(challenge => {
+    const li = document.createElement('li');
+    li.textContent = challenge.name + ': ' + challenge.duration;
+    challengesList.appendChild(li);
+});
+
+// animate progress bar
+const progressBar = document.getElementById('progress-bar');
+const progress = 50;
+progressBar.style.width = progress
